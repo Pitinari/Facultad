@@ -1,0 +1,87 @@
+;(/ 1 (sin (sqrt 3)))
+;(* (sqrt 2) (sin pi))
+;(+ 3 (sqrt 5) (sqrt (/ 3 (cos pi))))
+;(/ (sqrt 5) (sin (* 3 pi)))
+;(/ (+ 3 0) (* 2 4))
+;(* 1 2 3 4 5 6 7 8)
+;(/ 120 2 3 2 2 5)
+
+;(string-append "Hola" "mundo")
+;(string-append "Pro" "gra" "ma.")
+;(number->string 121235)
+;(string-append "la respuesta es: " (number->string(+ 2 2)))
+;(* (string-length "Hola") (string-length "chau"))
+
+;(not #t)
+;(or #t #f)
+;(and #t #f)
+;(and #t (or #f (not #f)) (not #t))
+;(not (= 2 (* 1 3)))
+;(or (= 2 (* 1 3)) (< 4 ( + 3 2)))
+
+;(> (cos 0) 0)
+;(= (string-length "hola, mundo") 14)
+;(and (< 3 pi) (> 4 pi))  ;(< 3 pi 4) ; (3 < pi) < 4
+;(= (* 5 5) (sqrt 625))
+
+;(circle 10 "solid" "10 red")
+;(rectangle 10 20 "solid" (make-color 10 200 30))
+;(rectangle 20 12 "outline" "magenta")
+;(overlay (rectangle 20 20 "solid" "blue") (circle 20 "solid" "green"))
+;(empty-scene 100 100)
+;(place-image (circle 10 "solid" "blue") 40 50 (empty-scene 100 100))
+;(+ (image-width (circle 10 "solid" "red")) (image-height (rectangle 10 20 "solid" "blue")))
+
+;(define P "Neptuno")
+;(define 1TRES 3)
+;(define CINCO (+ 1 (* 2 2)))
+;(define VERDADERO #true)
+;(define PUNTOROJO (circle 3 "solid" "red"))
+                          
+;(define (cuad-azul x) (square x "solid" "blue"))
+;(define (h x y) (< x (doble y)))
+;(define (z x y) (< x (* 2 y)))
+;(define (doble x) (* x 2))
+;(define (f x) (+ x 1))
+
+;(cuad-azul (doble 10))
+;(and (h 2 3) (h 3 4))
+;(= (f 1) (doble 1))
+
+;(define (g x y) (sqrt (+ (* x x) (* y y))))
+;(g 1 1)
+
+;(define (p x y z w) (sqrt (+ (* (- z x) (- z x) ) (* (- w y) (- w y)))))
+;(p 4 5 6 7)
+
+;(define (vol-cubo x) (* x x x))
+
+;(define (area-cubo x) (* x x 6))
+
+;(define (metro-pie x) (* x 3.281))
+
+;(define (cel-far x) (+ (* x (/ 9 5)) 32))
+
+;(define (posible? a b c) ( and (< a (+ b c))
+;                             (< c (+ b a))
+;                             (< b (+ a c))))
+
+;(define (pitagorica? a b c) (
+;                          or (= (sqr a) (+ (sqr b) (sqr c)))
+;                             (= (sqr c) (+ (sqr b) (sqr a)))
+;                             (= (sqr b) (+ (sqr a) (sqr c)))))
+
+;(define (suma-long x y) (+ (string-length x) (string-length y)))
+
+;(define (comienzaA? x) (string=? (string-ith x 0) "A"))
+
+;(define (poner- x i) (string-append (substring x 0 i) "-" (substring x i (string-length x))))
+
+
+
+
+
+
+
+
+

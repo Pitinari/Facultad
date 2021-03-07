@@ -1,0 +1,24 @@
+Escrito: Habia varios ejercicios y te daban 4 aleatorios
+Para simbolos matematicos uso latex
+
+
+1) Dados 3 vectores no nulos u,v y w \in R^2, mostrar que si u//v entonces proy_u (w) = proy_v (w)
+
+2)Sea f:Z -> Z/ f(x) = x^2 + x:
+- Analizar inyectividad
+- Analizar Sobreyectividad
+- devolver el conjunto imagen de la función
+
+3)Sea la ecuacion de la recta r) a_0.x+b_0.y+c_0 devolver las ecuaciones de las rectas paralelas a r que disten una distancia k, tal que k>0, del origen de coordenadas
+
+4)Sea R una relación de equivalencia en un conjunto A y a,b \in A, demostrar:
+-[a] \neq \emptyset
+-si (a,b) \in R <=> [a] = [b]
+
+Multiple choice: (los que me acuerdo)
+
+1) \frac{(1-i)^10}{(1+i)^12}.w = i (cuanto vale w)
+
+2) uno de induccion que habia que elegir el que se cumpla, se cumplia que 5^{2n+1}+2^{2n+1} es multiplo de 7
+
+los otros no tengo desarrollo pero eran triviales

@@ -1,0 +1,296 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage{exscale}
+\usepackage{relsize}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{pst-plot}
+\usepackage{pgfplots}\pgfplotsset{compat=1.9}
+\usepackage{tikz}
+\usepackage{pgfmath}
+\pgfplotsset{compat=1.16}
+\def\therefore{\boldsymbol{\text{ }
+\leavevmode
+\lower0.4ex\hbox{$\cdot$}
+\kern-.5em\raise0.7ex\hbox{$\cdot$}
+\kern-0.55em\lower0.4ex\hbox{$\cdot$}
+\thinspace\text{ }}}
+\usepgfplotslibrary{polar}
+
+\title{UNIDAD 3: Resumen Continuidad y L\'imite \\ An\'alisis Matem\'atico I}
+\author{}
+\date{}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+ 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ce}[1]{\begin{center}{#1}\end{center}}
+
+
+
+
+\begin{document}
+\maketitle
+\begin{flushleft}
+
+\section*{1.1  Distancia de Puntos y Entornos}
+Se recurre al valor absoluto para cuantificar la distancia en que se encuentran dos puntos, recordando que, para $x,y \in \R$ y representando a la distancia entre estos dos como $d(x,y)$:
+\ce{$d(x,y) = |x - y|$}
+\textbf{Definici\'on} Llamamos entorno (o entorno abierto) de un n\'umero real $a$, de radio $\delta$, al intervalo abierto $(a-\delta , a+\delta )$, y lo notamos por $E(a, \delta )$. Esto es,
+
+\begin{center}
+    \begin{wraptable}
+        \centering
+        \begin{tabular}{c c c}
+            $E(a, \delta )$ & = & $\{ x\in \R : a-\delta < x < a+\delta \}$\\
+             & = & $\{ x\in \R : -\delta < x - a < \delta \}$\\
+             & = & $\{ x\in \R : |x - a| < \delta \}$\\
+        \end{tabular}
+    \end{wraptable}
+\end{center}
+
+Adem\'as, llamamos entorno  reducido del punto $a$ y de radio $\delta$, al conjunto $E(a,\delta ) - \{a\}$, y lo notamos por $E'(a,\delta )$. Esto es,
+
+\begin{center}
+    \begin{wraptable}
+        \centering
+        \begin{tabular}{c c c}
+            $E'(a, \delta )$ & = & $\{ x\in \R : |x - a| < \delta \land x \neq a\}$\\
+             & = & $\{ x\in \R : 0 < |x - a| < \delta \}$\\
+        \end{tabular}
+    \end{wraptable}
+\end{center}
+
+\textbf{Nota}. Sean $a$ un n\'umero real y dos n\'umeros reales positivos $\delta_1$ y $\delta_2$. Entonces, si $\delta$ es un n\'umero positivo tal que $\delta \leq$ \textbf{m\'in}$\{\delta_1 , \delta_2\}$, se tiene 
+\ce{$E(a,\delta ) \subseteq E(a,\delta_1) \cap E(a,\delta_2)$,}
+y\\
+\ce{$E'(a,\delta) \subseteq E'(a,\delta_1) \cap E'(a,\delta_2)$}.
+En efecto,\\
+\ce{$|x-a| < \delta \Rightarrow |x-a| < \delta_1 \land |x-a| < \delta_2$},
+y
+\ce{$0 < |x-a| < \delta \Rightarrow 0 < |x-a| < \delta_1 \land 0 < |x-a| < \delta_2$}
+\textbf{Nota:} Si una propiedad se cumple en un entorno $\delta_1$ y otra propiedad se cumple en un entorno $\delta_2$, entonces ambas se cumple en un entorno $\delta / min\{\delta_1,\delta_2\}$, demostraremos m\'as adelante.
+
+\section*{1.2  Definici\'on de L\'imite Finito en un Punto}
+
+\textbf{Definici\'on}: Dada una funci\'on real $f$ y un n\'umero real $a$, de manera que $f$ est\'a definida en un entorno reducido del punto $a$, decimos que un valor $l$ es el l\'imite de la funci\'on $f$, cuando la variable independiente tiende al valor $a$, y lo notamos con el s\'imbolo
+\ce{$\lim\limits_{x \to a} f(x) = l$,}
+si, para cualquier valor $\varepsilon > 0$, existe un $\delta$, tal que,
+\ce{$0 < |x-a| < \delta \Rightarrow |f(x) - l | < \varepsilon$}
+En t\'erminos de entornos, si
+\ce{$x \in E'(a,\delta) \Rightarrow f(x) \in E(l,\varepsilon)$}
+Entonces de forma proposicional,
+\ce{$\lim\limits_{x \to a} f(x) = l$}
+si y solo si
+\ce{$\forall \varepsilon > 0, \exists \delta > 0 / \forall x : (0 < |x-a| < \delta \Rightarrow |f(x)-l| < \varepsilon)$}
+
+\textbf{Nota:} no es necesario que $a$ este en el dominio de $f$, esta solo debe estar definida en el entorno reducido de $a$.\\
+\textbf{Nota:} Lo siguiente es equivalente
+\ce{$\lim\limits_{x \to a} f(x) = l$, $\lim\limits_{x \to 0} f(x+a) = l$, $\lim\limits_{x \to a} f(x) - l = 0$}
+\textbf{Nota:} $\delta$ depende de $a$ y de $\varepsilon$, tambien se sabe que para cualquier $\delta' < \delta$ es v\'alido. Y por otro lado, si un valor $\delta$ es \'util para un $\varepsilon$, tambien lo es para un $\varepsilon' > \varepsilon$
+
+\section*{1.3  Algunos L\'imites Finitos}
+\textbf{La funci\'on constante:} $f(x) = c \in \R$:
+\ce{$\lim\limits_{x \to a} c = c$}
+Se verifica viendo que para cualquier $\varepsilon > 0$ y cualquier $\delta > 0$, se tiene que $0 < |x-a| < \delta \Rightarrow |f(x) - c| = |c-c| = 0 < \varepsilon$.\\
+\textbf{La funci\'on lineal: } $f(x) = mx + h$ con $m \neq 0$
+\ce{$\lim\limits_{x \to a} mx + h = ma + h$}
+Dado $\varepsilon > 0, |f(x) - l| = |(mx + h) - (ma - h)| = |mx - ma| = |m||x-a|$, basta considerar $\displaystyle \delta < \frac{\varepsilon}{|m|}$\\
+\textbf{La funci\'on cuadr\'atica:} $f(x) = x^2$
+\ce{$\lim\limits_{x \to a} x^2 = a^2$}
+Entonces
+\ce{$|x^2 - a^2| = |x-a||x+a|$}
+Supongamos que elegimos $\delta = 1$, y sea $x$ tal que $|x-a| < \delta = 1$. Entonces
+\begin{center}
+    \begin{wraptable}
+        \centering
+        \begin{tabular}{c c c}
+            $|x-a|$ & < & $\delta \Rightarrow -1 < x-a < 1$\\
+             & $\Rightarrow$ & $a-1 < x < a+1$\\
+             & $\Rightarrow$ & $2a-1 < x+a < 2a+1$\\
+             & $\Rightarrow$ & $|x+a| < 2a+1$\\
+        \end{tabular}
+    \end{wraptable}
+\end{center}
+Entonces, eligiendo $\delta \leq min\{1,\frac{\varepsilon}{2a+1}\}$, se tiene $|x-a| < \frac{\varepsilon}{2a+1}$ y $|x+a| < 2a+1$, y entonces
+\ce{$\displaystyle |x^2-a^2| = |x-a||x+a| < |x-a|.2a+1 < \delta 2a + 1 < \frac{\varepsilon}{2a + 1}2a+1 = \varepsilon$}
+\textbf{La funci\'on rec\'iproca:} $\frac{1}{x}$
+\ce{$\displaystyle \lim\limits_{x \to a} \frac{1}{x} = \frac{1}{a}$ con $a \neq 0$}
+observamos
+\ce{$\displaystyle \Bigm\lvert\frac{1}{x}-\frac{1}{a}\Bigm\lvert = \Bigm\lvert\frac{a-x}{ax}\Bigm\lvert = \frac{|x-a|}{|xa|}$}
+Elegimos un $\delta = 1$, tenemos que 
+\begin{center}
+    \begin{wraptable}
+        \centering
+        \begin{tabular}{c c c}
+            $|x-a|$ & < & $\delta \Rightarrow -1 < x-a < 1$\\
+             & $\Rightarrow$ & $a-1 < x < a+1$\\
+             & $\Rightarrow$ & $a^2-a < xa < a^2+a$\\
+             & $\Rightarrow$ & $|xa| > a^2-a$\\
+        \end{tabular}
+    \end{wraptable}
+\end{center}
+Con esto vemos que para todo $\varepsilon > 0$, eligiendo $\delta \leq min\{1,(a^2-a)\varepsilon\}$, se tiene que $|x-a| < (a^2-a)\varepsilon$ y $|xa|>a^2-a$, y en consecuencia
+\ce{$\displaystyle \frac{|x-a|}{|xa|} < \frac{|x-a|}{a^2-a} < \frac{(a^2-a)\varepsilon}{a^2-a} = \varepsilon$}
+
+\section*{1.4  Unicidad del L\'imite}
+
+\textbf{Teorema 1} (Unicidad del l\'imite) Sea $f$ una funci\'on real definida en un entorno reducido del punto $a$ y sean $l_1$ y $l_2$ dos n\'umeros tales que
+\ce{$\lim\limits_{x \to a} f(x) = l_1 \land \lim\limits_{x \to a} f(x) = l_2 \Rightarrow l_1 = l_2$}
+\textit{Demostraci\'on: } Dado $\varepsilon > 0$, sean $\delta_1 > 0$ y $\delta_2 > 0$, (cuya existencia garantizamos por ser $l_1$ y $l_2$ l\'imites de la funci\'on en el punto $a$) tales que
+\ce{$\displaystyle 0 < |x-a| < \delta_1 \Rightarrow |f(x) - l_1| < \frac{\varepsilon}{2} \land 0 < |x-a| < \delta_2 \Rightarrow |f(x) - l_2| < \frac{\varepsilon}{2}$}
+Entonces, si consideramos $\delta \leq min\{\delta_1,\delta_2\}$ y consideramos cualquier $x \in E'(a,\delta)$, tendremos
+\ce{$\displaystyle |l_1 - l_2| = |l_1 - f(x) + f(x) - l_2| \leq |l_1 - f(x)| + |f(x) - l_2| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$}
+De la arbitrariedad de $\varepsilon$, por consecuencia de la propiedad arquimediana, surge
+\ce{$|l_1 - l_2| = 0 \Rightarrow l_1 = l_2$}
+\textbf{Observaci\'on: }Propiedad Arquimediana: dados $x,y \in \R, z > 0$ si para todo $n \in \N$ vale $x\leq y < x + \frac{z}{n} \Rightarrow x = y$.
+
+\section*{1.5  No Existencia de L\'imite}
+Negando nuestra definici\'on de l\'imite tenemos una propocisi\'on para afirmar que $l$ no es el \'limite de nuestra funci\'on en un punto.
+\ce{$\exists \varepsilon > 0 / \forall\delta > 0, \exists x: (0 < |x-a| < delta \land |f(x) - l| \geq \varepsilon)$}
+
+\section*{1.6  L\'imites Laterales}
+\textbf{Definici\'on:}
+\begin{itemize}
+    \item Se dice que un n\'umero $l$ es l\'imite por derecha de la funci\'on $f$ en el punto $a$, y se nota
+    \ce{$\lim\limits_{x \to a^+} f(x) = l \Leftrightarrow \forall \varepsilon > 0 ( \exists \delta > 0 / a < x < a+\delta \Rightarrow |f(x) - l| < \varepsilon )$}
+    \item Se dice que un n\'umero $l$ es l\'imite por izquierda de la funci\'on $f$ en el punto $a$, y se nota
+    \ce{$\lim\limits_{x \to a^-} f(x) = l \Leftrightarrow \forall \varepsilon > 0 ( \exists \delta > 0 / a-\delta < x < a \Rightarrow |f(x) - l| < \varepsilon )$}
+\end{itemize}
+\textbf{Proposici\'on 1} Sean $a$ un n\'umero real y $f$ una funci\'on. Entonces
+\ce{$\exists \lim\limits_{x \to a} f(x) = l \Leftrightarrow \exists \lim\limits_{x \to a^-} f(x) = l \land \exists \lim\limits_{x \to a^+} f(x) = l$}
+\textit{Demostraci\'on:} Si existe $\lim\limits_{x \to a} f(x) = l$ se cumple que dado un $\varepsilon > 0$ existe un $\delta > 0$ que cumple con la def. de l\'imite. Entonces para ese $\delta$, si $x$ verifica
+\ce{$a-\delta < x < a \Rightarrow 0 < |x-a| < \delta \Rightarrow |f(x) - l| < \varepsilon$}
+y
+\ce{$a < x < a+\delta \Rightarrow 0 < |x-a| < \delta \Rightarrow |f(x) - l| < \varepsilon$}
+entonces se verifica
+\ce{$\lim\limits_{x \to a^-} f(x) = l$ y $\lim\limits_{x \to a^+} f(x) = l$}
+$\Leftarrow$) Rec\'iprocamente, si valen
+\ce{$\lim\limits_{x \to a^-} f(x) = l$ y $\lim\limits_{x \to a^+} f(x) = l$}
+entonces, para $\varepsilon > 0$, existen $\delta_1$ y $\delta_2$ tales que
+\ce{$a-\delta < x < a \Rightarrow |f(x) - l| < \varepsilon$ y $a < x < a+\delta \Rightarrow |f(x) - l| < \varepsilon$}
+Entonces para $\delta \leq min\{\delta_1,\delta_2\}$
+\ce{$a-\delta < x < a \Rightarrow a-\delta_1 < x < a \Rightarrow |f(x) - l| < \varepsilon$\\$a < x < a + \delta \Rightarrow a < x < a+\delta_2 \Rightarrow |f(x) - l| < \varepsilon$ }
+con lo que 
+\ce{$0 < |x-a| < \delta \Rightarrow |f(x) - l| < \varepsilon \Rightarrow \lim\limits_{x \to a} f(x) = l$}
+\textit{Nota:} En vista de que la existencia e igualdad de l\'imites laterales en un punto es condici\'on
+necesaria y suficiente para garantizar la existencia de l\'imite all\'i, la no existencia de alguno de los
+l\'imites laterales, o la diferencia entre ambos en el caso de existir, implica la no existencia de l\'imite
+finito de la funci\'on en el punto.
+\section*{1.7  Teoremas}
+\textbf{Proposici\'on 2:} Sean $f$ una funci\'on y $a$ un n\'umero real tal que existe
+\ce{$\lim\limits_{x \to a} f(x) = l$}
+Entonces, existe
+\ce{$\lim\limits_{x \to a}|f(x)| = |l|$}
+\textit{Demostraci\'on:} Dado $\varepsilon > 0$, por hip\'otesis, existe $\delta > 0$ tal que si $x$ verifica
+\ce{$0 < |x-a| < \delta \Rightarrow |f(x) - l| < \varepsilon$}
+Como adem\'as
+\ce{$||f(x)| - |l|| \leq |f(x) - l|$ para $\delta$, vale $0 < |x-a| < \delta \Rightarrow ||f(x)| - |l|| \leq |f(x) - l| < \varepsilon$}
+\textbf{Nota:} La proposici\'on inversa no siempre vale.\\
+\textbf{Teorema 2:} (Caracter local de l\'imite). Sean $a$ un n\'umero real y dos funciones $f$ y $g$ para las cuales se verifican
+\ce{$\lim\limits_{x \to a} f(x) = l$ y $f(x) = g(x)$ en alg\'un $E'(a,\rho)$}
+Entonces $g$ tiene l\'imite en el punto $a$ y vale $\lim\limits_{x \to a} g(x) = l$
+\textit{Demostraci\'on:} Dado $\varepsilon > 0$, existe $\delta' > 0$, tal que
+\ce{$0 < |x-a| < \delta' \Rightarrow |f(x) - l| < \varepsilon$}
+Por hip\'otesis existe un $\rho > 0$ tal que
+\ce{$0 < |x-a| < \rho \Rightarrow f(x) = g(x)$}
+Tomando en cuenta esas afirmaciones, y eligiendo $\delta \leq min\{\delta',\rho\}$
+\ce{$0 < |x-a| < \delta \Rightarrow |f(x)-l| < \varepsilon$ y $f(x) = g(x) \Rightarrow |g(x) - l| < \varepsilon$ entonces $0 < |x-a| < \delta \Rightarrow |g(x)-l| < \varepsilon$}
+
+\textbf{Definici\'on:} Sea $A$ un subconjunto no vac\'io de $\R$ y $f$ una funci\'on definida en $A$ (no necesariamente el dominio de $f$). Decimos que $f$ esta acotada en $A$, si existe un n\'umero real $M > 0$, tal que para todo $x \in A$ se tiene
+\ce{$|f(x)| \leq M$}
+Alternativamente decimos que $f$ esta acotada en $A$ si el conjunto $\{f(x) : x\in A\}$ es un subconjunto acotado de $\R$\\
+\textbf{Teorema 3:} Sean $f$ una funci\'on y $a$ un n\'umero real tal que existe $\lim\limits_{x \to a} f(x) = l$, entonces existes un entorno reducido $E'(a,\delta)$ en el cual $f$ esta acotada\\
+\textit{Demostraci\'on:} Como $f$ tiene l\'imite $l$ en el punto $a$, en particular, para $\varepsilon = 1$ existe $\delta > 0$ tal que si $x \in E'(a,\delta) \Rightarrow |f(x) - l| < 1$. Con lo cual
+\ce{$|f(x) - l| < 1 \Rightarrow l - 1 < f(x) - l < 1 + l \Rightarrow -|l| - 1 \leq l-1 < f(x) < l+1 \leq |l|+1 \Rightarrow |f(x)| < |l| + 1 $}\\
+\textit{Nota:} La rec\'iproca de la anterior no es cierta.\\
+\textbf{Teorema 4:} Sean $f$ una funci\'on, $a$ un n\'umero real tal que existe $\lim\limits_{x \to a} f(x) = l$, y dos n\'umeros $k$ y $h$, tales que $h < l < k$. Entonces existe un entorno reducido $E'(a,\delta)$, donde para todo $x$ all\'i se verifica $h < f(x) < k$.\\
+\textit{Demonstraci\'on:} Siendo $k > l$, como $\lim\limits_{x \to a} f(x) = l$ y eligiendo $\varepsilon = k - l > 0$, sabemos que existe $\delta_1 > 0$ tal que, si $x \in E'(a,\delta_1) \Rightarrow |f(x) - l| < k -l$, con lo cual, en ese entorno $E'(a,\delta_1)$,
+\ce{$f(x) - l \leq |f(x) - l| < k - l \Rightarrow f(x) < k $ (1)}
+Ahora, como $l > h$, si elegimos $\varepsilon = l - h > 0$, sabemos que existe $\delta_2 > 0$ tal que, si $x \in E'(a,\delta_2) \Rightarrow |f(x) - l| < l - h$, con lo cual, en ese entorno $E'(a,\delta_2)$,
+\ce{$h-l < f(x) - l < l - h \Rightarrow h < f(x) < 2l - h$ (2)}
+Considerando, $\delta = min(\delta_1,\delta_2)$ de (1) y (2) vale que si
+\ce{$x \in E'(a,\delta) \Rightarrow h < f(x) < k$}\\
+\textbf{Corolario 1} (Teorema de conservaci\'on del signo) Sean $f$ una funci\'on, $a$ un n\'umero real tal que existe $\lim\limits_{x\to a}f(x) = l \neq 0$ entonces existe un entorno reducido $E'(a,\delta)$, donde $f(x) \neq 0$; y vale, por ejemplo $|f(x)| > \frac{|l|}{2}$\\
+\textit{Demostraci\'on:} Si $l>0$, consideramos $h = \frac{l}{2} < l$, y si $l < 0$, tomamos $k = \frac{l}{2} > l$, y aplicamos el teorema anterior y luego la proposici\'on 2, obtenemos $\lim\limits_{x\to a}|f(x)| = |l| \neq 0$, siendo $\frac{|l|}{2} < |l|$, sigue la segunda afirmaci\'on del enunciado.
+
+\section*{1.8  \'Algebra de L\'imites}
+\textbf{Teorema 5} Sean $a$ un n\'umero real, $f$ y $g$ dos funciones tales que existen los l\'imites en el punto $a$, y valen $\lim\limits_{x\to a}f(x) = l_1$ y $\lim\limits_{x\to a}g(x) = l_2$. Entonces se verifican:
+\begin{enumerate}
+    \item La funci\'on $f+g$ tiene l\'imite en el punto $a$, y vale $\lim\limits_{x\to a}(f+g)(x) = l_1 + l_2$.
+    \item Si $c \in \R$, la funci\'on $cf$ tiene l\'imite en el punto $a$, y vale $\lim\limits_{x\to a}(cf)(x) = cl_1$.
+    \item La funci\'on $f-g$ tiene l\'imite en el punto $a$, y vale $\lim\limits_{x\to a}(f-g)(x) = l_1-l_2$.
+\end{enumerate}
+\textit{Demostraci\'on:} 
+\begin{enumerate}
+    \item Dado $\varepsilon > 0$, sean $\delta_1 > 0$ y $\delta_2 > 0$, tales que se cumple la definici\'on de l\'imite de $f$ y $g$ para un $\frac{\varepsilon}{2}$, entonces para $\delta \leq min\{\delta_1,\delta_2\}$ y $x / 0 < |x-a| < \delta \Rightarrow |(f+g)(x) - (l_1+l_2)| = |(f(x) - l_1) + (g(x) - l_2)| \leq |f(x) - l_1| + |g(x) - l_2| < \frac{\varepsilon}{2}+\frac{\varepsilon}{2} = \varepsilon$
+    \item Si $c = 0$ el resultado es trivial, sea entonces $c \neq 0$, dado $\varepsilon > 0$, sea $\delta > 0$ tal que $0 < |x-a| < \delta \Rightarrow |f(x) - l_1| < \frac{\varepsilon}{|c|}$, entonces para los $x / 0 < |x-a| < \delta \Rightarrow |(cf)(x) - (cl_1)| = |c(f(x) - l_1)| = |c| |f(x) - l_1| < |c| \frac{\varepsilon}{|c|} = \varepsilon$.
+    \item $\lim\limits_{x\to a}(f-g)(x) = \lim\limits_{x\to a}(f + (-1)g)(x) = \lim\limits_{x\to a}f(x) + (-1) \lim\limits_{x\to a}g(x) = l_1-l_2$
+\end{enumerate}
+\textbf{Teorema 6} Sean $a$ un n\'umero real, $f$ y $g$ dos funciones tales que $\lim\limits_{x\to a}f(x) = 0$ y $g$ est\'a acotada en $E'(a,\rho)$. Entonces, la funci\'on $fg$ tiene l\'imite en el punto $a$, y vale $\lim\limits_{x\to a}(fg)(x) = 0$
+\textit{Demostraci\'on:} Dado $\varepsilon > 0$, sean $\delta' > 0$ y $M > 0$ tales que
+\ce{$0 < |x-a| < \delta' \Rightarrow |f(x)| < \frac{\varepsilon}{M}$ y $0 < |x-a| < \rho \Rightarrow |g(x)| \leq M$}
+Entonces para $\delta \leq min\{\rho,\delta'\}$ tenemos
+\ce{$0 < |x-a| < \delta \Rightarrow |(fg)(x) - 0| = |f(x)g(x)| = |f(x)| |g(x)| < \frac{\varepsilon}{M}M = \varepsilon$}
+\textbf{Teorema 7} Sean $a$ un n\'umero real , $f$ y $g$ funciones tales que existen los l\'imites en el punto $a$ y valen $\lim\limits_{x \to a} f(x) = l_1$ y $ \lim\limits_{x \to a} g(x) = l_2$
+\begin{enumerate}
+    \item existe el l\'imite de la funci\'on $fg$ en el punto $a$ y vale $\lim\limits_{x \to a} (fg)(x) = l_1l_2$
+    \item Si $l_2 \neq 0$ la funci\'on $\frac{f}{g}$ tiene l\'imite en $a$ y vale $\lim\limits_{x \to a} \left(\frac{f}{g}\right)(x) = \frac{l_1}{l_2}$
+\end{enumerate}
+\textit{Demostraci\'on:} 
+\begin{enumerate}
+    \item En primer lugar, recordemos (por teorema 3) que como $f$ tiene l\'imite $l_1$ en el punto $a$, est\'a  acotada en un $E'(a,\rho)$, por un n\'umero $M > 0$, esto es $0 < |x-a|<\rho \Rightarrow |f(x)| \leq M$. Si $l_2 = 0$, el enunciado es edel teorema anterior. Supongamos entonces $l_2 \neq 0$. Dado $\varepsilon > 0$, sean $\delta_1$ y $\delta_2$ tales que
+    \ce{$0 < |x-a| < \delta_1 \Rightarrow |f(x) - l_1| < \frac{\varepsilon}{2|l_2|}$ y $0 < |x-a| < \delta_2 \Rightarrow |g(x) - l_2| < \frac{\varepsilon}{2M}$}
+    Entonces para $\delta \leq min\{\rho,\delta_1,\delta_2\}$,
+    \ce{$0 < |x-a| < \delta \Rightarrow |(fg)(x) - (l_1l_2)| = |f(x)g(x) - f(x)l_2 + f(x)l_2 - l_1l_2| \leq |f(x)g(x) - f(x)l_2| + |f(x)l_2 - l_1l_2| = |f(x)||g(x) - l_2| + |f(x) - l_1||l_2| < M\frac{\varepsilon}{2M}+\frac{\varepsilon}{2|l_2|}|l_2| = \varepsilon$}
+    \item Casos:
+    \begin{enumerate}
+        \item Caso $\displaystyle \lim\limits_{x \to a}\left(\frac{1}{g}\right)(x) = \frac{1}{l_2}$, como $l_2 \neq 0$ por el corolario 1, existe un $E'(a,\rho)$, tal que $|g(x)| > m$, para $m> 0$, por ejemplo $\frac{|l_2|}{2}$. Luego para $\varepsilon > 0$, existe $\delta' > 0$, tal que $0<|x-a|<\delta' \Rightarrow |g(x) - l_2| < m|l_2|\varepsilon$, entonces para $\delta \leq min\{\rho,\delta'\}$
+        \ce{$\displaystyle \left|\left(\frac{1}{g}\right)(x) - \frac{1}{l_2}\right| = \left|\frac{1}{g(x)} - \frac{1}{l_2}\right| = \left|\frac{l_2 - g(x)}{g(x)l_2}\right| = |g(x) - l_2|\frac{1}{|g(x)|}\frac{1}{|l_2|} < m|l_2|\varepsilon\frac{1}{m}\frac{1}{|l_2|} = \varepsilon$}
+        \item $\displaystyle \lim\limits_{x \to a} \left(\frac{f}{g}\right)(x) = \lim\limits_{x \to a} f(x)\left(\frac{1}{g}\right)(x) = l_1\frac{1}{l_2} = \frac{l_1}{l_2}$
+    \end{enumerate}
+\end{enumerate}
+\textbf{Nota:} Combinando los resultados de esta parte podemos afirmar:
+\begin{enumerate}
+    \item Para todo $n \in \N$ y $a \in \R$, existe $\lim\limits_{x\to a} x^n = a^n$
+    \item Dado un polinomio $p(x)$ y $a \in \R$, entonces $\lim\limits_{x\to a} p(x) = p(a)$
+    \item Dados los polinomios $p(x)$ y $q(x)$ y un $a \in \R$, existe $\displaystyle\lim\limits_{x\to a} \frac{p(x)}{q(x)} = \frac{p(a)}{q(a)}$ si $q(a) \neq 0$
+\end{enumerate}
+\textbf{Proposicion 3} El algebra de l\'imites se aplica tambien para $x \rightarrow a^+$ o $x \rightarrow a^-$
+\section*{1.9 Limite de Funciones Trigonometricas}
+\textbf{Proposicion 4:} Si $\displaystyle -\frac{\pi}{2} < x < \frac{\pi}{2} \Rightarrow |sin(x)| \leq |x| \leq |tan(x)|$ y son iguales si $x = 0$\\
+\textit{Demostracion:} Ya sabemos que para $x = 0$ se cumple la igualdad. Para $\displaystyle -\frac{\pi}{2} < x < \frac{\pi}{2},x\neq0,$ se compara graficamente viendo las areas de los triangulos que forman\\
+\textit{Nota:} La desigualdad $|sin(x)| < |x|$ se cumple para todo los $x \neq 0$. Luego para $|x| \geq \frac{\pi}{2}$, se tiene $|sin(x)| \leq 1 < \frac{\pi}{2} \leq |x|$\\
+\textbf{Teorema 8:} Para $a \in \R$, $\lim\limits_{x \to a} sin(x) = sin(a) \land \lim\limits_{x \to a} cos(x) = cos(a)$\\
+\textit{Demostracion:} $\lim\limits_{x \to a} sin(x) = \lim\limits_{x \to 0} sin(x+a) = \lim\limits_{x \to 0} (sin(x)cos(a) + cos(x)sin(x)) = 0.cos(a) + 1.sin(a) = sin(a)$\\y\\$\lim\limits_{x \to a} cos(x) = \lim\limits_{x \to 0} cos(x+a) = \lim\limits_{x \to 0} (cos(x)cos(a) - sin(x)sin(a)) = 1.cos(a) - 0.sin(a) = cos(a)$\\
+\textbf{Corolario 2:}
+\begin{enumerate}
+    \item Para $a \neq \frac{\pi}{2}+k\pi$, $\displaystyle \lim\limits_{x \to a} tan(x) = tan(a)$ y $\displaystyle \lim\limits_{x \to a} sec(x) = \lim\limits_{x \to a} \frac{1}{cos(x)} = \frac{1}{cos(a)} = sec(a)$
+    \item Para $a \neq k\pi$, $\displaystyle \lim\limits_{x \to a} csc(x) = \lim\limits_{x \to a} \frac{1}{sin(x)} = \frac{1}{sin(a)} = csc(a)$ y $\displaystyle \lim\limits_{x \to a} cot(x) = \lim\limits_{x \to a} \frac{cos(x)}{sin(x)} = \frac{cos(a)}{sin(a)} = cot(a)$
+\end{enumerate}
+\section*{1.10 El Principio de Intercalacion}
+\textbf{Teorema 9: (principio de intercalacion)} Sean $f,g,h$ tres funciones y $a$ un n\'umero real, tales que, en alg\'un entorno reducido $E'(a,\rho)$ se tiene que $g(x) \leq f(x) \leq h(x)$ y ademas las funciones $g$ y $h$ tienen limite en el punto $a$, siendo $l$ para ambos. Entonces la funcion $f$ tambien tiene l\'imite en el punto $a$ y vale $l$
+\\
+\textit{Demostracion:} Si para un $\delta_1$ se cumple el limite de $g(x)$ en un $a$, si para un $\delta_2$ se cumple el limite de $h(x)$ en $a$, entonces para $\delta = min\{\rho,\delta_1,\delta_2\}$, se tiene
+\ce{$g(x) \leq f(x) \leq h(x) \land l-\varepsilon < g(x) \land h(x) < l+\varepsilon$\\$ \Rightarrow l-\varepsilon < g(x) < f(x) < l + \varepsilon \Rightarrow |f(x)-l| < \varepsilon$}
+\textbf{Proposici\'on 5:} el principio de intercalacion es valido para $x \to a^+$ y $x \to a^-$\\
+\textbf{Proposici\'on 6:} $\displaystyle \lim\limits_{x \to 0} \frac{sin(x)}{x} = 1$\\
+\textit{Demostraci\'on:} Con la proposicion 4, primero vemos para los $0 < x < \frac{\pi}{2}$ donde $sin(x) > 0$:
+\ce{$\displaystyle sin(x) < x < tan(x) \Rightarrow \frac{sin(x)}{sin(x)} < \frac{x}{sin(x)} < \frac{tan(x)}{sin(x)} \Rightarrow 1 < \frac{x}{sin(x)} < \frac{1}{cos(x)}$}
+Para los $-\frac{\pi}{2} < x < 0$ donde $sin(x) < 0$:
+\ce{$\displaystyle -sin(x) < -x < -tan(x) \underbrace{\Rightarrow}_{\text{multiplicamos} -\frac{1}{sin(x)} > 0} \frac{sin(x)}{sin(x)} < \frac{x}{sin(x)} < \frac{tan(x)}{sin(x)} \Rightarrow 1 < \frac{x}{sin(x)} < \frac{1}{cos(x)}$}
+Ademas sabemos $\lim\limits_{x \to 0} \frac{1}{cos(x)} = 1 \neq 0$, y utilizando el teorema 9 se concluye que $\lim\limits_{x \to 0} \frac{x}{sin(x)} = 1 \neq 0 \Rightarrow \lim\limits_{x \to 0} \frac{sin(x)}{x} = 1$
+\end{flushleft} 
+\end{document}
