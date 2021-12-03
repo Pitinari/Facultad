@@ -1,0 +1,8 @@
+Ejercicio 1: EL ejercicio presenta varios inconvenientes: el desarrollo no es claro, no se justifican los pasos, hay errores en la nomenclatura y en el ítem (b) está incompleto ya que falta demostrar que si
+[q -> r] = F entonces [p -> q] = T
+
+Ejercicio 2: Ambos apartados están muy bien. En el ejercicio (i) faltó justificar algunas líneas, y en el (ii) está mal planteado el árbol de i⊥, pero el resultado está bien.
+
+Ejercicio 3: No demuestra nada de lo pedido.
+
+Ejercicio 4: (i) y (ii) no están bien. No se termina de entender. En el (ii) se usan dos reglas triviales que derivan lo opuesto? Item (iii) está muy bien, el (iv) no se resuelve.

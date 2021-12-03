@@ -1,0 +1,17 @@
+.data
+
+.text
+
+setJump:
+	xorq %rax, %rax
+	popq %rbx
+	movq %rbx, %rdi
+	movq $1, %rax
+	jmp *%rbx
+
+longJump:
+	popq %rbx
+
+	jmp *%rdi
+
+
